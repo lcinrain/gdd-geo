@@ -1,5 +1,6 @@
 Due to time constraints, the codes are being organized and will be uploaded completely before January 10, 2024.
 
+<<<<<<< HEAD
 We use mysql to store data for a better view.
 
 Requirements:
@@ -32,3 +33,6 @@ Data:
 
 Codes:
 - tables.py: table creation statement.
+=======
+- [city_trace](./data/city_trace/): traceroute data for 241 cities in 24 countries. 
+>>>>>>> da86b9faf2fda35289ccd6215c4dc79205d3fff5
