@@ -5,12 +5,14 @@ We use mysql to store data for a better view.
 Requirements:
 - mysql 5.7
 - python 3.7
-- pip install mysql-connector-python
+    - pip install mysql-connector-python
 
 
 Data:
-- [city_trace](./data/city_trace/): traceroute data for 26 countries. mysql dump files. Download->Decompress->Load into your mysql
-- [city_landmarks](./data/city_landmark/): We randomly select 20% of the targets in 'city_trace' as landmarks for 10 trials. This forder contains the selected landmarks. You need not load these data to your mysql. They are unnecessary for running the codes. Each dump file contains 10 tables for a country.
+- [data/city_trace](./data/city_trace/): traceroute data for 26 countries. mysql dump files. Download->Decompress->Load into your mysql.
+- [data/city_landmarks](./data/city_landmark/): We randomly select 20% of the targets in 'city_trace' as landmarks for 10 trials. This forder contains the selected landmarks. You need not load these data to your mysql. They are unnecessary for running the codes. Each dump file contains 10 tables for a country.
+- [data/subgraphs](./data/subgraphs/): IPv6 addresses in each subgraphs (clusters).
+- [data/accuracy/accuracy.dhc8.lmp20.10rounds.txt](./data/accuracy/accuracy.dhc8.lmp20.10rounds.txt) provides historical city-level geolocation accuracy by using [data/city_landmarks](./data/city_landmark/).
 
 | **Name**    | **Type** | **length** | **Descript**                        |
 |-------------|----------|------------|-------------------------------------|
@@ -31,6 +33,6 @@ Data:
 
 
 Codes:
-- tables.py: table creation statement.
+- tables.py: table creation statements.
 
 
