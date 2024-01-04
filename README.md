@@ -12,7 +12,7 @@ Data:
 - [data/city_trace](./data/city_trace/): traceroute data for 26 countries. mysql dump files. Download->Decompress->Load into your mysql.
 - [data/city_landmarks](./data/city_landmark/): We randomly select 20% of the targets in 'city_trace' as landmarks for 10 trials. This forder contains the selected landmarks. You need not load these data to your mysql. They are unnecessary for running the codes. Each dump file contains 10 tables for a country.
 - [data/subgraphs](./data/subgraphs/): IPv6 addresses in each subgraphs (clusters).
-- [data/accuracy/accuracy.dhc8.lmp20.10rounds.txt](./data/accuracy/accuracy.dhc8.lmp20.10rounds.txt) provides historical city-level geolocation accuracy by using [data/city_landmarks](./data/city_landmark/).
+- [data/accuracy/accuracy.dhc8.lmp20.10rounds.txt](./data/accuracy/accuracy.dhc8.lmp20.10rounds.txt) provides historical city-level geolocation accuracy by using [data/city_landmarks](./data/city_landmark/) and [data/subgraphs](./data/subgraphs/).
 
 | **Name**    | **Type** | **length** | **Descript**                        |
 |-------------|----------|------------|-------------------------------------|
@@ -34,5 +34,11 @@ Data:
 
 Codes:
 - tables.py: table creation statements.
+- [city_geo.py](./city_geo.py): GDD-CGeo.
 
+To retest our geolocation resutls, use the function `geo_city3_test_aveAcc10rounds()`. It will randomly select 20% IPv6 addresses as landmarks and the rest 80% as targets for 10 times and than geolocate the targets. It will provide an overview of city-level geolocation accuracy for each country in [data/accuracy/accuracy.dhc8.lmp20.10rounds.txt](./data/accuracy/accuracy.dhc8.lmp20.10rounds.txt). eg,
+```python
+if __name__ == '__main__':
+    geo_city3_test_aveAcc10rounds()
+```
 
