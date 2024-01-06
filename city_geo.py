@@ -502,8 +502,28 @@ def select_path_random_percentn(input_table:str,output_table:str='',percent_n=[0
         sql = f"CREATE TABLE `{output_table}` AS SELECT * FROM `{input_table}` WHERE path_id IN (SELECT path_id FROM `{tmp_table}`)"
         cursor.execute(sql)
         cursor.execute(f"DROP TABLE `{tmp_table}`")
-    return output_table
+    #return output_table
+
+def geo_instance(n=0.2,country='china'):
+    '''
+    select n landmarks and geolocate the targets in country
+
+    Parameters:
+        - n: float, proportion of landmarks. 0.2 means 20%
+        - country: in 26 countries
+    '''
+    target_tracerTable = f'tracer_city_{country}'
+    lm_percentage = n*100
+    lm_tracerTable = target_tracerTable+f'_lm_p{lm_percentage}'
+    geo_table = 'geo_city_'+country+f'_dhc8_lm_p{lm_percentage}'
+    print(geo_table)
+    cluster_table = 'cluster_city_'+country+'_dhc8'
+    select_path_random_percentn(input_table=target_tracerTable,output_table=lm_tracerTable,n=[n,])
+    num_targets,num_correct = geo_city3(geo_table=geo_table,lm_tracerTable=lm_tracerTable,target_tracerTable=target_tracerTable,clusterTable=cluster_table,last_hop=-5)
+    print(f'total targets:',num_targets,'total correct:',num_correct,'accuracy:',num_correct/num_targets)
+
 
 if __name__ == '__main__':
     # select 20% of the IPv6 addresses as landmarks, 80% as targets to geolocate the targets for 10 times. This process will cost much time.
     geo_city3_test_aveAcc10rounds()
+    # geo_instance(n=0.3,country='china')
