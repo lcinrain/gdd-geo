@@ -36,9 +36,15 @@ Codes:
 - tables.py: table creation statements.
 - [city_geo.py](./city_geo.py): GDD-CGeo.
 
-To retest our geolocation resutls, use the function `geo_city3_test_aveAcc10rounds()`. It will randomly select 20% IPv6 addresses as landmarks and the rest 80% as targets for 10 times and than geolocate the targets. It will provide an overview of city-level geolocation accuracy for each country in [data/accuracy/accuracy.dhc8.lmp20.10rounds.txt](./data/accuracy/accuracy.dhc8.lmp20.10rounds.txt). eg,
+To retest our geolocation results, use the function `geo_city3_test_aveAcc10rounds()`. It will randomly select 20% IPv6 addresses as landmarks and the rest 80% as targets for 10 times and then geolocate the targets. It will provide an overview of city-level geolocation accuracy for each country in [data/accuracy/accuracy.dhc8.lmp20.10rounds.txt](./data/accuracy/accuracy.dhc8.lmp20.10rounds.txt). eg,
 ```python
 if __name__ == '__main__':
     geo_city3_test_aveAcc10rounds()
+```
+
+To select 30% IPv6 addresses as landmarks and geolocate the targets in china, use the function `geo_instance()`. eg,
+```python
+if __name__ == '__main__':
+    geo_instance(n=0.3,country='china')
 ```
 
