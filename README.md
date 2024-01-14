@@ -1,4 +1,4 @@
-Due to time constraints, the codes are being organized and will be uploaded completely before January 10, 2024.
+We will complete the document later.
 
 We use mysql to store data for a better view.
 
@@ -6,6 +6,7 @@ Requirements:
 - mysql 5.7
 - python 3.7
     - pip install mysql-connector-python
+    - pip install python-igraph
 
 
 Data:
